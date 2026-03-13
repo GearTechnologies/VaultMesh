@@ -77,7 +77,6 @@ export async function encryptToLit(
   plaintext: string,
   acc: AccessControlConditions
 ): Promise<{ ciphertext: string; dataToEncryptHash: string }> {
-  const { LitNodeClient } = await import("@lit-protocol/lit-node-client");
   const { encryptString } = await import("@lit-protocol/lit-node-client");
 
   const client = await getLit();

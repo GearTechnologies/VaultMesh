@@ -8,7 +8,6 @@ const LIT_NETWORK = (globalThis as unknown as { process?: { env?: { VITE_LIT_NET
   ?.process?.env?.VITE_LIT_NETWORK ?? LitNetwork.DatilTest;
 
 let _client: LitNodeClient | null = null;
-let _connecting = false;
 let _connectPromise: Promise<LitNodeClient> | null = null;
 
 const MAX_RETRIES = 5;

@@ -62,7 +62,7 @@ export async function retrieveBlob(cid: string): Promise<Uint8Array> {
 }
 
 /**
- * Upload a JSON-serialisable object to Storacha.
+ * Upload a JSON-serialisable object to Storacha (stored as plaintext).
  * @returns The IPFS CID string.
  */
 export async function uploadJSON(client: Client, obj: unknown): Promise<string> {
@@ -73,9 +73,11 @@ export async function uploadJSON(client: Client, obj: unknown): Promise<string> 
 
 /**
  * Retrieve and decrypt a JSON object from IPFS.
- * @param cid       IPFS CID string.
- * @param key       AES-GCM CryptoKey to decrypt the blob.
- * @returns         The parsed JSON object.
+ * The blob must have been stored in the format [12-byte IV][AES-GCM ciphertext].
+ *
+ * @param cid  IPFS CID string.
+ * @param key  AES-GCM CryptoKey used to encrypt the blob at upload time.
+ * @returns    The parsed JSON object.
  */
 export async function retrieveJSON<T>(cid: string, key: CryptoKey): Promise<T> {
   const { decrypt } = await import("../crypto/aes.js");

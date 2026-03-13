@@ -87,9 +87,9 @@ export async function stopRelay(node: Libp2p): Promise<void> {
 
 /**
  * Get current bandwidth statistics for the relay node.
+ * TODO: Read from @libp2p/bandwidth-stats service once node exposes it.
  */
 export function getBandwidthStats(_node: Libp2p): BandwidthStats {
-  // In a real implementation, read from @libp2p/bandwidth-stats service
   return { ..._bandwidthStats };
 }
 

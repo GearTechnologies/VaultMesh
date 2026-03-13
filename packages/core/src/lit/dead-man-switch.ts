@@ -17,6 +17,10 @@ export interface DeadManSwitchParams {
 /**
  * Returns the Lit Action JavaScript source code.
  * The action checks if the DeadManSwitch contract is triggered and releases heir shares.
+ *
+ * When executing this action via `client.executeJs`, pass `encryptedShares` and
+ * `shareHashes` as `jsParams` — they are injected into the action's global scope
+ * by the Lit SDK before the action runs.
  */
 export function createDeadManSwitchAction(): string {
   return `

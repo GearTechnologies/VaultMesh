@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-ext/
+.env
+.env.local
+typechain-types/
+cache/
+artifacts/
+coverage/
+*.log
+.turbo/
+deployments/*.json

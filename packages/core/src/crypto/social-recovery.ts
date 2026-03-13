@@ -36,16 +36,16 @@ function gfMulNaive(a: number, b: number): number {
 
 function gfMul(a: number, b: number): number {
   if (a === 0 || b === 0) return 0;
-  // GF_LOG values are deterministic table indices (0–254); modulo here is not applied
-  // to random data — it wraps the sum of two log values within the field order.
-  // lgtm[js/biased-cryptographic-random]
-  return GF_EXP[(GF_LOG[a] + GF_LOG[b]) % 255];
+  // GF_EXP has 512 entries; max sum of two log values is 254+254=508 < 512,
+  // so the extended table handles wrapping without a modulo operation.
+  return GF_EXP[GF_LOG[a] + GF_LOG[b]];
 }
 
 function gfDiv(a: number, b: number): number {
   if (b === 0) throw new Error("Division by zero in GF(256)");
   if (a === 0) return 0;
-  return GF_EXP[(GF_LOG[a] - GF_LOG[b] + 255) % 255];
+  // GF_LOG[a] - GF_LOG[b] + 255 is in [1, 509] ⊂ [0, 511]; extended table suffices.
+  return GF_EXP[GF_LOG[a] - GF_LOG[b] + 255];
 }
 
 function gfPow(x: number, p: number): number {

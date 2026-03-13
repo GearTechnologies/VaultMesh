@@ -1,0 +1,31 @@
+{
+  "name": "@vaultmesh/core",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@lit-protocol/lit-node-client": "^6.11.0",
+    "@lit-protocol/auth-helpers": "^6.11.0",
+    "@lit-protocol/constants": "^6.11.0",
+    "@lit-protocol/types": "^6.11.0",
+    "@web3-storage/w3up-client": "^16.5.2",
+    "ethers": "^6.12.0",
+    "libp2p": "^3.1.5",
+    "@libp2p/webrtc": "^6.0.13",
+    "@libp2p/noise": "^1.0.1",
+    "@libp2p/yamux": "^8.0.1",
+    "@libp2p/circuit-relay-v2": "^4.1.5",
+    "@libp2p/bootstrap": "^12.0.13",
+    "@libp2p/identify": "^4.0.12"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}

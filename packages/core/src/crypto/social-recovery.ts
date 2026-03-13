@@ -36,6 +36,9 @@ function gfMulNaive(a: number, b: number): number {
 
 function gfMul(a: number, b: number): number {
   if (a === 0 || b === 0) return 0;
+  // GF_LOG values are deterministic table indices (0–254); modulo here is not applied
+  // to random data — it wraps the sum of two log values within the field order.
+  // lgtm[js/biased-cryptographic-random]
   return GF_EXP[(GF_LOG[a] + GF_LOG[b]) % 255];
 }
 
